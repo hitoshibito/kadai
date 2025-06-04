@@ -6,12 +6,12 @@ session_start();
         'LAA1553892',
         '0730'
     );
-        $sid = isset($_POST['id'])? htmlspecialchars($_POST['id'], ENT_QUOTES, 'utf-8') : '';
+        $sname = isset($_POST['username'])? htmlspecialchars($_POST['username'], ENT_QUOTES, 'utf-8') : '';
         $password = isset($_POST['password'])? htmlspecialchars($_POST['password'], ENT_QUOTES, 'utf-8'): '';
-        $stmt = $pdo->prepare("SELECT * FROM user WHERE id = ? and password = ?");
-        $stmt->execute([$sid, $password]);
+        $stmt = $pdo->prepare("SELECT * FROM user WHERE username = ? and password = ?");
+        $stmt->execute([$sname, $password]);
 
-        if ($sid == '') {
+        if ($sname == '') {
             header("Location:./login.php");
             exit;
         }
@@ -23,7 +23,7 @@ session_start();
         if ($stmt->rowCount()>0) {
             //ログイン許可
             // IDを取得
-            $_SESSION['id']=$_POST['id'];
+            $_SESSION['username']=$_POST['username'];
             $_SESSION['admin_login'] = true;
             header("Location:./form.php");
         } else {

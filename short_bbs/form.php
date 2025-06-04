@@ -12,11 +12,11 @@
         '0730'
     );
 
-    // IDを取得
-    $user_id=$_SESSION['id'];
+    // usernameを取得
+    $user_name=$_SESSION['username'];
 
-    $stmt = $pdo->prepare("SELECT * FROM user WHERE id = :id");
-    $stmt->bindParam(':id', $user_id, PDO::PARAM_INT);
+    $stmt = $pdo->prepare("SELECT * FROM user WHERE username = :username");
+    $stmt->bindParam(':username', $user_name, PDO::PARAM_STR);
     $stmt->execute();
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
