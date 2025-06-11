@@ -36,7 +36,7 @@
     ?>
     <form action="post.php" method="post">
         <input type="hidden" name="user_id" value="<?= htmlspecialchars($row['id']) ?>">
-        <p>名前：<input type="text" name="name" required></p>
+        <input type="hidden" name="name" value="<?= htmlspecialchars($row['username']) ?>"></p>
         <p>コメント：<br>
         <textarea name="comment" rows="4" cols="40" required></textarea></p>
         <p><button type="submit">投稿する</button></p>
